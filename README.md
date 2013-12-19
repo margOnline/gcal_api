@@ -10,6 +10,8 @@ To create a small app incorporating the Google Calendar API
     <ul>
       <li>sinatra</li>
       <li>sinatra-partial</li>
+      <li>google-api-client', '>= 0.6' gem 'sinatra'</li>
+      <li>json</li>
     </ul>
 </ul>
 <h4>Next Steps</h4>
