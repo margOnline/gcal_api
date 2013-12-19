@@ -1,12 +1,9 @@
 require 'google/api_client'
 require 'google/api_client/client_secrets'
-
 require 'sinatra'
-require 'logger'
+
 
 enable :sessions
-
-def logger; settings.logger end
 
 def api_client; settings.api_client; end
 
@@ -24,10 +21,6 @@ def user_credentials
 end
 
 configure do
-  log_file = File.open('calendar.log', 'a+')
-  log_file.sync = true
-  logger = Logger.new(log_file)
-  logger.level = Logger::DEBUG
   
   client = Google::APIClient.new
   client.authorization.client_id = 'your_client_id.apps.googleusercontent.com'
@@ -35,8 +28,6 @@ configure do
   client.authorization.scope = 'https://www.googleapis.com/auth/calendar'
 
   calendar = client.discovered_api('calendar', 'v3')
-
-  set :logger, logger
   set :api_client, client
   set :calendar, calendar
 end
